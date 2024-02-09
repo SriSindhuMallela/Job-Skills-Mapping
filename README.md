@@ -1,4 +1,4 @@
-# Job-and-Skills-Mapping-Dashboard
+# Job-and-Skills-Mapping
 
 The project aims to create a user-friendly dashboard that maps various occupations in various industries across different demographic regions. The dashboard will help job seekers make informed career choices by evaluating data from O*NET and BLS OEWS resources. The visualizations will show the skills, technologies, and employment statistics required for various occupations, enabling users to consider potential career routes and training opportunities. This project seeks to narrow the gap between job seekers and employers by providing a platform to learn the necessary skills for success.
 
