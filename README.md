@@ -12,11 +12,3 @@ In the data preprocessing stage, we employed multiple tools like SQL, Excel, and
 To present the insights effectively, I used visualization tools such as Tableau, PowerBI, and Gephi. We created interactive and engaging visualizations that will help stakeholders understand the insights and trends better. My approach ensured that the data was thoroughly analyzed, and valuable insights were extracted and presented in an easily understandable format.
 
 
-## Visualizations
-
-Visualization 1 - https://public.tableau.com/views/BarGraph_16804695679320/Sheet1?:language=en-US&:display_count=n&:origin=viz_share_link
-Visualization 2 – https://app.powerbi.com/groups/me/reports/45d9d2c5-6ce7-4480-8592-12133dd6d989/ReportSection
-Visualization 3 – https://public.tableau.com/views/WordCloudforHotTechnologies/Sheet1?:language=en-US&:display_count=n&:origin=viz_share_link
-Visualization 4 - https://public.tableau.com/views/OccupationswithHotandIn-demandtechnicalskills/Sheet3?:language=en-US&:display_count=n&:origin=viz_share_link
-Visualization 5 – https://public.tableau.com/views/GeospatialJobStatistics/Dashboard1?:language=en-US&:display_count=n&:origin=viz_share_link
-Visualization 6 - https://public.tableau.com/views/WageStatistics/Sheet1?:language=en-US&:display_count=n&:origin=viz_share_link
