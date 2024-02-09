@@ -1,0 +1,89 @@
+-- Base Tables
+
+select * from occupation_data;
+
+select * from content_model_reference;
+
+select * from scales_reference;
+
+select * from unspsc_reference;
+
+-- Main Tables
+
+select * from skills;
+
+select * from technology_skills;
+
+
+-- VIZ - 1 -- Histogram
+
+select distinct c.element_name as "Skill",
+COUNT(c.element_name) as "No_of Occupations"
+from content_model_reference c, skills k, scales_reference s
+where c.element_id = k.element_id
+and s.scale_id = k.scale_id
+and k.not_relevant = 'N'
+and s.scale_id = 'LV'
+and k.data_value > 3
+group by c.element_name;
+
+-- VIZ - 2 -- Sankey
+
+SELECT DISTINCT o.onetsoc_code, o.title, c.element_id, c.element_name, s.scale_id, s.scale_name, 
+k.data_value, k.not_relevant
+FROM occupation_data o, content_model_reference c,
+scales_reference s, skills k
+WHERE o.onetsoc_code = k.onetsoc_code
+AND c.element_id = k.element_id
+AND s.scale_id = k.scale_id
+AND k.not_relevant = 'N';
+
+-- VIZ - 3 -- Word Cloud
+
+
+select distinct ts.example as "Hot Technology in demand" , COUNT(ts.example) as "No_of_Occupations"
+from occupation_data o, technology_skills ts
+where o.onetsoc_code = ts.onetsoc_code
+and ts.hot_technology = 'Y'
+group by ts.example;
+
+-- VIZ - 4 - Stacked Bar graph
+
+select distinct o.title as "Occupation", ts.example as "Hot Technology"
+from occupation_data o, technology_skills ts
+where o.onetsoc_code = ts.onetsoc_code
+and ts.hot_technology = 'Y'
+and ts.in_demand = 'Y';
+
+
+-- VIZ - 5 -- Network Graph
+
+with data_main (title, element_name, scale_name, data_value, not_relevant) as (select o.title, c.element_name, s.scale_name, k.data_value, k.not_relevant
+from occupation_data o, 
+content_model_reference c, 
+scales_reference s, 
+skills k
+where o.onetsoc_code = k.onetsoc_code
+and c.element_id = k.element_id
+and s.scale_id = k.scale_id)
+
+select * from 
+(select d.title, d.element_name, d.scale_name, d.data_value, coalesce(d.not_relevant,d_not_null.not_relevant) as Not_Relevant
+
+from data_main d ,
+(select title, element_name, scale_name, data_value,not_relevant from data_main d where not_relevant is not null) d_not_null
+
+where d.title=d_not_null.title
+and d.element_name=d_not_null.element_name) a
+
+where 1=1
+and a.Not_Relevant='N'
+and a.scale_name = 'Importance'
+and a.data_value > 4
+order by 4 desc;
+
+
+
+
+
+
